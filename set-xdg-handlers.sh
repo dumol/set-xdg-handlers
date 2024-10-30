@@ -18,11 +18,13 @@ set -o pipefail   # don't ignore exit codes when piping output
 #    org.pwmt.zathura-pdf-mupdf imv-dir org.gnome.gedit
 #)
 
-# Intermediate setup with a mix of native GTK+ 3 / GTK 4 apps.
+# Intermediate setup with a mix of native and FlatPak GTK+ 3 / GTK 4 apps.
 declare -a apps=(
-    firefox thunderbird mpv deadbeef
+    org.telegram.desktop org.signal.Signal
+    firefox thunderbird gcr-viewer mpv deadbeef
     libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-impress
-    org.gnome.Evince org.gnome.Loupe org.gnome.FileRoller org.gnome.TextEditor
+    org.gnome.Nautilus org.gnome.Evince org.gnome.Loupe org.gnome.FileRoller
+    org.gnome.font-viewer org.gnome.TextEditor
 )
 
 ## Complex setup using only Flatpak apps.
