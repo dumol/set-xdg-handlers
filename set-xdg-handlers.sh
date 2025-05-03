@@ -12,19 +12,19 @@ set -o errexit    # always exit on error
 set -o pipefail   # don't ignore exit codes when piping output
 
 ## Simple setup using native GTK+ 3.x apps.
-declare -a apps=(
-    firefox thunderbird pcmanfm lxshortcut mpv deadbeef
-    abiword org.gnumeric.gnumeric xarchiver
-    org.gnome.Evince org.gnome.eog org.gnome.gedit
-)
+#declare -a apps=(
+#    firefox thunderbird pcmanfm lxshortcut mpv deadbeef
+#    abiword org.gnumeric.gnumeric xarchiver
+#    org.gnome.Evince org.gnome.eog org.gnome.gedit
+#)
 
 # Intermediate setup with a mix of native and FlatPak GTK+ 3 / GTK 4 apps.
-#declare -a apps=(
-#    firefox thunderbird gcr-viewer mpv deadbeef
-#    libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-impress
-#    org.gnome.Nautilus org.gnome.Evince org.gnome.Loupe org.gnome.FileRoller
-#    org.gnome.font-viewer org.gnome.TextEditor
-#)
+declare -a apps=(
+    firefox thunderbird mpv deadbeef
+    libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-impress
+    org.gnome.Nautilus org.gnome.Papers org.gnome.Loupe org.gnome.FileRoller
+    org.gnome.font-viewer org.gnome.TextEditor
+)
 
 ## Complex setup using only Flatpak apps.
 #declare -a apps=(
@@ -44,8 +44,8 @@ mime_types_with_custom_handlers=(
     text_xml
 )
 # Define the app handling each MIME type above.
-application_json="org.gnome.gedit"
-text_xml="org.gnome.gedit"
+application_json="org.gnome.TextEditor"
+text_xml="org.gnome.TextEditor"
 
 declare -a xdg_dirs=(
     "/usr/share/applications"
