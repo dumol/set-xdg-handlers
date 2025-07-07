@@ -2,7 +2,7 @@
 # 
 # Script to associate file types to desired apps using:
 #   * their .desktop files
-#   * in the desired order (last to be set overrides previous ones)
+#   * in a custom order (last to be set overrides previous ones)
 #   * with custom associations, if so desired.
 # See the configuration below for practical examples.
 
@@ -11,20 +11,28 @@ set -o nounset    # always check if variables exist
 set -o errexit    # always exit on error
 set -o pipefail   # don't ignore exit codes when piping output
 
-## Simple setup using native GTK+ 3.x apps.
-#declare -a apps=(
-#    firefox thunderbird pcmanfm lxshortcut mpv deadbeef
-#    abiword org.gnumeric.gnumeric xarchiver
-#    org.gnome.Evince org.gnome.eog org.gnome.gedit
-#)
-
-# Intermediate setup with a mix of native and FlatPak GTK+ 3 / GTK 4 apps.
-declare -a apps=(
-    firefox thunderbird mpv deadbeef
-    libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-impress
-    org.gnome.Nautilus org.gnome.Papers org.gnome.Loupe org.gnome.FileRoller
-    org.gnome.font-viewer org.gnome.TextEditor
+# System-specific locations of .desktop files, hopefully covering all scenarios.
+declare -a xdg_dirs=(
+    "/usr/share/applications"
+    "/usr/local/share/applications"
+    "/var/lib/flatpak/exports/share/applications"
+    "$HOME/.local/share/flatpak/exports/share/applications"
 )
+
+## Simple setup using native GTK+ 3.x apps.
+declare -a apps=(
+    firefox thunderbird pcmanfm lxshortcut mpv deadbeef xarchiver
+    abiword org.onlyoffice.desktopeditors org.gnumeric.gnumeric
+    org.gnome.font-viewer org.gnome.Evince org.gnome.eog org.gnome.gedit
+)
+
+# Intermediate setup with a mix of native GTK+ 3 / GTK 4 apps.
+#declare -a apps=(
+#    firefox thunderbird mpv deadbeef
+#    libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-impress
+#    org.gnome.Nautilus org.gnome.Papers org.gnome.Loupe org.gnome.FileRoller
+#    org.gnome.font-viewer org.gnome.TextEditor
+#)
 
 ## Complex setup using only Flatpak apps.
 #declare -a apps=(
@@ -42,17 +50,12 @@ declare -a apps=(
 mime_types_with_custom_handlers=(
     application_json
     text_xml
+    font_collection
 )
 # Define the app handling each MIME type above.
-application_json="org.gnome.TextEditor"
-text_xml="org.gnome.TextEditor"
-
-declare -a xdg_dirs=(
-    "/usr/share/applications"
-    "/usr/local/share/applications"
-    "/var/lib/flatpak/exports/share/applications"
-    "$HOME/.local/share/flatpak/exports/share/applications"
-)
+application_json="org.gnome.org.gnome.gedit"
+text_xml="org.gnome.org.gnome.gedit"
+font_collection="org.gnome.font-viewer"
 
 
 # This is where the action begins, no more configuration.
