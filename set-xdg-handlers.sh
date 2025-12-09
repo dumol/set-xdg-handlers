@@ -21,8 +21,8 @@ declare -a xdg_dirs=(
 
 ## Simple setup using native GTK+ 3.x apps.
 declare -a apps=(
-    firefox thunderbird pcmanfm lxshortcut mpv deadbeef xarchiver
-    abiword org.onlyoffice.desktopeditors org.gnumeric.gnumeric
+    firefox thunderbird pcmanfm lxshortcut mpv xarchiver
+    abiword org.gnumeric.gnumeric
     org.gnome.font-viewer org.gnome.Evince org.gnome.eog org.gnome.gedit
 )
 
@@ -53,8 +53,8 @@ mime_types_with_custom_handlers=(
     font_collection
 )
 # Define the app handling each MIME type above.
-application_json="org.gnome.org.gnome.gedit"
-text_xml="org.gnome.org.gnome.gedit"
+application_json="org.gnome.gedit"
+text_xml="org.gnome.gedit"
 font_collection="org.gnome.font-viewer"
 
 
