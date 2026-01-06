@@ -33,24 +33,35 @@ declare -a xdg_dirs=(
 
 # Intermediate setup with native GNOME apps.
 # Most apps can also be installed as Flatpak.
-declare -a apps=(
-    org.gnome.Epiphany org.gnome.Evolution org.gnome.Calls
-    org.gnome.Nautilus org.gnome.FileRoller
-    libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-impress
-    org.gnome.Papers com.github.johnfactotum.Foliate org.gnome.TextEditor
-    org.gnome.Loupe org.gnome.Showtime
-)
+#declare -a apps=(
+#    org.gnome.Epiphany org.gnome.Evolution org.gnome.Calls
+#    org.gnome.Nautilus org.gnome.FileRoller
+#    libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-impress
+#    org.gnome.Papers com.github.johnfactotum.Foliate org.gnome.TextEditor
+#    org.gnome.Loupe org.gnome.Showtime
+#)
 
 ## Complex setup using only Flatpak apps.
 #declare -a apps=(
-#    org.telegram.desktop org.signal.Signal org.gnome.Calls
 #    org.mozilla.firefox org.mozilla.Thunderbird
+#    org.telegram.desktop org.signal.Signal org.gnome.Calls
 #    org.gnome.Maps org.gnome.FileRoller
 #    org.libreoffice.LibreOffice.writer org.libreoffice.LibreOffice.calc
 #    org.libreoffice.LibreOffice.draw org.libreoffice.LibreOffice.impress
 #    org.gnome.Papers com.github.johnfactotum.Foliate org.gnome.TextEditor
 #    org.gnome.Loupe org.gnome.Showtime
 #)
+
+# Real-world setup.
+declare -a apps=(
+    firefox org.gnome.Evolution
+    de.schmidhuberj.Flare org.gnome.Fractal org.gnome.Calls
+    org.gnome.Nautilus org.gnome.FileRoller
+    org.libreoffice.LibreOffice.writer org.libreoffice.LibreOffice.calc
+    org.libreoffice.LibreOffice.draw org.libreoffice.LibreOffice.impress
+    org.gnome.Papers com.github.johnfactotum.Foliate org.gnome.TextEditor
+    org.gnome.Loupe mpv
+)
 
 # Here's how to override what is set above for any MIME type.
 # Using _ instead of / because of shell limitations.
