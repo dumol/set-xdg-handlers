@@ -78,10 +78,14 @@ for app in "${apps[@]}"; do
         if [ -r "$xdg_dir"/"$desktop_file" ]; then
             app_found=1
             cd "$xdg_dir"
-            mime_types="$(grep 'MimeType=' $desktop_file | sed -e 's/.*=//' -e 's/;/ /g')"
-            echo "    Setting default MIME types for ${app}: $mime_types"
-            # Do not quote $mime_types.
-            xdg-mime default "$desktop_file" $mime_types
+            if grep -q 'MimeType=' $desktop_file; then
+                mime_types="$(grep 'MimeType=' $desktop_file | sed -e 's/.*=//' -e 's/;/ /g')"
+                echo "    Setting default MIME types for ${app}: $mime_types"
+                # Do not quote $mime_types.
+                xdg-mime default "$desktop_file" $mime_types
+            else
+                echo "    No MIME types found for ${app}"
+            fi
             break
         fi
     done
