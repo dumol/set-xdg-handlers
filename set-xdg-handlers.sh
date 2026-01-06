@@ -19,30 +19,37 @@ declare -a xdg_dirs=(
     "$HOME/.local/share/flatpak/exports/share/applications"
 )
 
-## Simple setup using native GTK+ 3.x apps.
-declare -a apps=(
-    firefox thunderbird pcmanfm lxshortcut mpv xarchiver
-    abiword org.gnumeric.gnumeric
-    org.gnome.font-viewer org.gnome.Evince org.gnome.eog org.gnome.gedit
-)
+# Choose a setup below by uncommenting it while keeping the others commented.
+# App ordering matters, the associations of latter apps override previous rules.
 
-# Intermediate setup with a mix of native GTK+ 3 / GTK 4 apps.
+## Simple setup using native GTK3 apps.
 #declare -a apps=(
-#    firefox thunderbird mpv deadbeef
-#    libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-impress
-#    org.gnome.Nautilus org.gnome.Papers org.gnome.Loupe org.gnome.FileRoller
-#    org.gnome.font-viewer org.gnome.TextEditor
+#    firefox thunderbird
+#    pcmanfm lxshortcut xarchiver
+#    abiword org.gnumeric.gnumeric
+#    org.gnome.Evince org.gnome.gedit
+#    org.gnome.eog org.gnome.Totem
 #)
+
+# Intermediate setup with native GNOME apps.
+# Most apps can also be installed as Flatpak.
+declare -a apps=(
+    org.gnome.Epiphany org.gnome.Evolution org.gnome.Calls
+    org.gnome.Nautilus org.gnome.FileRoller
+    libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-impress
+    org.gnome.Papers com.github.johnfactotum.Foliate org.gnome.TextEditor
+    org.gnome.Loupe org.gnome.Showtime
+)
 
 ## Complex setup using only Flatpak apps.
 #declare -a apps=(
-#    org.telegram.desktop org.signal.Signal
+#    org.telegram.desktop org.signal.Signal org.gnome.Calls
+#    org.mozilla.firefox org.mozilla.Thunderbird
+#    org.gnome.Maps org.gnome.FileRoller
 #    org.libreoffice.LibreOffice.writer org.libreoffice.LibreOffice.calc
 #    org.libreoffice.LibreOffice.draw org.libreoffice.LibreOffice.impress
-#    org.mozilla.firefox org.mozilla.Thunderbird org.gnome.Totem
-#    org.gnome.Calls org.gnome.Maps org.gnome.Evince
-#    com.github.johnfactotum.Foliate org.gnome.Loupe org.gnome.FileRoller
-#    org.gnome.font-viewer org.gnome.TextEditor
+#    org.gnome.Papers com.github.johnfactotum.Foliate org.gnome.TextEditor
+#    org.gnome.Loupe org.gnome.Showtime
 #)
 
 # Here's how to override what is set above for any MIME type.
@@ -53,8 +60,8 @@ mime_types_with_custom_handlers=(
     font_collection
 )
 # Define the app handling each MIME type above.
-application_json="org.gnome.gedit"
-text_xml="org.gnome.gedit"
+application_json="org.gnome.TextEditor"
+text_xml="org.gnome.TextEditor"
 font_collection="org.gnome.font-viewer"
 
 
