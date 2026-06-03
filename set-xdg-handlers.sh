@@ -54,13 +54,13 @@ declare -a xdg_dirs=(
 
 # Real-world setup.
 declare -a apps=(
-    firefox org.gnome.Evolution
-    de.schmidhuberj.Flare org.gnome.Fractal org.gnome.Calls
+    firefox-esr org.gnome.Evolution
+    org.signal.Signal org.gnome.Fractal org.gnome.Calls
     org.gnome.Nautilus org.gnome.FileRoller
-    org.libreoffice.LibreOffice.writer org.libreoffice.LibreOffice.calc
-    org.libreoffice.LibreOffice.draw org.libreoffice.LibreOffice.impress
+    com.collaboraoffice.Office
     org.gnome.Papers com.github.johnfactotum.Foliate org.gnome.TextEditor
     org.gnome.Loupe mpv
+    org.gnome.font-viewer
 )
 
 # Here's how to override what is set above for any MIME type.
